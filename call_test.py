@@ -1,6 +1,7 @@
 # Download the helper library from https://www.twilio.com/docs/python/install
 from twilio.rest import Client
 from os import environ
+import time
 
 
 # Your Account Sid and Auth Token from twilio.com/console
@@ -9,8 +10,13 @@ account_sid = environ['ACCT_KEY']
 auth_token = environ['AUTH_KEY']
 client = Client(account_sid, auth_token)
 
-message = client.calls.create(
-                     url = "http://demo.twilio.com/docs/voice.xml",
-                     from_= environ['TWILLIO_NUMBER'],
-                     to= environ['MY_NUMBER']
-                     )
+while True:
+  hr = time.gmtime().tm_hour+5
+  if(hr == 16):
+    message = client.calls.create(
+      twiml = "<Response>
+                <Say voice=\"alice\">WAKEUP</Say>
+               </Response>",
+      from_= environ['TWILLIO_NUMBER'],
+      to= environ['MY_NUMBER'])
+   sleep(60*15)
