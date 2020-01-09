@@ -11,12 +11,12 @@ auth_token = environ['AUTH_KEY']
 client = Client(account_sid, auth_token)
 
 while True:
-  hr = time.gmtime().tm_hour-5
-  if(hr == 16):
+  tm = time.gmtime()
+  hr = tm.tm_hour-5
+  day = tm.tm_wday
+  if(hr == 7 and day < 5):
     message = client.calls.create(
-      twiml = "<Response>
-                <Say voice=\"alice\">WAKEUP</Say>
-               </Response>",
-      from_= environ['TWILLIO_NUMBER'],
+      twiml = "<Response><Say voice=\"alice\">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</Say></Response>",
+      from_= envrion['TWILLIO_NUMBER'],
       to= environ['MY_NUMBER'])
   time.sleep(60*15)
