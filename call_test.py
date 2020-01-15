@@ -22,4 +22,5 @@ while True:
       twiml = "<Response><Say voice=\"alice\">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</Say></Response>",
       from_= envrion['TWILLIO_NUMBER'],
       to= environ['MY_NUMBER'])
+  print("sleep 15 min...")
   time.sleep(60*15)
