@@ -14,7 +14,10 @@ while True:
   tm = time.gmtime()
   hr = tm.tm_hour-5
   day = tm.tm_wday
+  print("hr: " + str(hr))
+  print("day: " + str(day))
   if(hr == 7 and day < 5):
+    print("calling...")
     message = client.calls.create(
       twiml = "<Response><Say voice=\"alice\">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</Say></Response>",
       from_= envrion['TWILLIO_NUMBER'],
